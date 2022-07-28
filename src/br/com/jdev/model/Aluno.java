@@ -11,8 +11,6 @@ import br.com.jdev.util.*;
  *         treinamentos.
  */
 public class Aluno extends Pessoa {
-
-
 	String dataMatricula;
 	String nomeEscola;
 	String serieMatriculado;
