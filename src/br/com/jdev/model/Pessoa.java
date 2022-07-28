@@ -56,4 +56,7 @@ public abstract class Pessoa {
 	public boolean pessoaMaiorIdade() {
 		return idade >= 18;
 	}
+	
+//	Esse metodo é obrigado a ser reescrito nas classes filhas, e não precisa escrever nada no corpo dele.
+	public abstract double salario();
 }
