@@ -10,15 +10,9 @@ import br.com.jdev.util.*;
  * @author jdev-treinamentos Os exemplos aqui estão como nas aulas do curso jdev
  *         treinamentos.
  */
-public class Aluno {
+public class Aluno extends Pessoa {
 
-	String nome;
-	int idade;
-	String dataNascimento;
-	String registroGeral;
-	String numeroCpf;
-	String nomeMae;
-	String nomePai;
+
 	String dataMatricula;
 	String nomeEscola;
 	String serieMatriculado;
