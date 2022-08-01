@@ -6,30 +6,10 @@ public class Secretario extends Pessoa implements PermitirAcesso{
 	private String registro;
 	private String nivelCargo;
 	private String experiencia;
-	
-	private String login;
-	private String senha;
-	
-//	Esse é o metódo do contrato de autenticação, retorna true se o login e a senha for admin, caso contrario retorna false
+
 	@Override
-	public boolean autenticar() {
+	public boolean autenticar(String login, String senha) {
 		return login.equals("admin") && senha.equals("admin");
-	}
-	
-	public void setLogin(String login) {
-		this.login = login;
-	}
-	
-	public String getLogin() {
-		return login;
-	}
-	
-	public void setSenha(String senha) {
-		this.senha = senha;
-	}
-	
-	public String getSenha() {
-		return senha;
 	}
 	
 	public String getRegistro() {
