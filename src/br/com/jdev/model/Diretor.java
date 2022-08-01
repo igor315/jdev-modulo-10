@@ -1,9 +1,34 @@
 package br.com.jdev.model;
 
-public class Diretor extends Pessoa {
+import br.com.jdev.interfaces.PermitirAcesso;
+
+public class Diretor extends Pessoa implements PermitirAcesso {
 	private String registroEducacao;
 	private int tempoDirecao;
 	private String titulacao;
+	
+	private String senha;
+	private String login;
+	
+	public Diretor(String login, String senha) {
+		this.login = login; 
+		this.senha = senha;
+	}
+	
+	public Diretor() {
+	}
+	
+	@Override
+	public boolean autenticar(String login, String senha) {
+		this.login = login;
+		this.senha = senha;
+		return autenticar();
+	}
+	
+	@Override
+	public boolean autenticar() {
+		return login.equals("igor") && senha.equals("123");
+	}
 	
 	public String getRegistroEducacao() {
 		return registroEducacao;

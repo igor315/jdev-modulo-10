@@ -12,8 +12,10 @@ import javax.swing.JOptionPane;
 
 import br.com.jdev.interfaces.PermitirAcesso;
 import br.com.jdev.model.Aluno;
+import br.com.jdev.model.Diretor;
 import br.com.jdev.model.Disciplina;
 import br.com.jdev.model.Secretario;
+import br.com.jdev.util.FuncaoAutenticacao;
 import br.com.jdev.util.StatusAluno;
 
 public class Application {
@@ -22,12 +24,10 @@ public class Application {
 		
 		String login = JOptionPane.showInputDialog("Informe o login");
 		String senha = JOptionPane.showInputDialog("Informe a senha");
+
 		
-		PermitirAcesso permitirAcesso = new Secretario(login, senha);
-		
-		
-//		Trabalhando diretamente com o objeto
-		if(permitirAcesso.autenticar()) {
+
+		if(new FuncaoAutenticacao(new Diretor(login, senha)).autenticar()) {
 
 		List<Aluno> alunos = new ArrayList<Aluno>();
 		
