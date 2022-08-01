@@ -23,10 +23,11 @@ public class Application {
 		String login = JOptionPane.showInputDialog("Informe o login");
 		String senha = JOptionPane.showInputDialog("Informe a senha");
 		
-		PermitirAcesso secretario = new Secretario();
+		PermitirAcesso permitirAcesso = new Secretario(login, senha);
+		
 		
 //		Trabalhando diretamente com o objeto
-		if( new Secretario().autenticar(login, senha)) {
+		if(permitirAcesso.autenticar()) {
 
 		List<Aluno> alunos = new ArrayList<Aluno>();
 		
