@@ -132,8 +132,22 @@ public class Application {
 		JOptionPane.showMessageDialog(null, "As credenciais estão incorretas, tente novamente!");
 	}
 		}catch (Exception e) {
+			StringBuilder saida = new StringBuilder();
+			
+//			Imprime erro no console Java
 			e.printStackTrace();
-			JOptionPane.showMessageDialog(null, "Erro ao processar notas!");
+			
+//			Mensagem do erro ou causa
+			System.out.println("Mensagem: " + e.getMessage());
+			
+			for(int pos = 0; pos < e.getStackTrace().length; pos++) {
+				saida.append("\nClasse de erro : " + e.getStackTrace()[pos].getClassName());
+				saida.append("\nMétodo de erro : " + e.getStackTrace()[pos].getMethodName());
+				saida.append("\nLinha de erro : " + e.getStackTrace()[pos].getLineNumber());
+				saida.append("\nClass : " + e.getClass().getName());
+			}
+			
+			JOptionPane.showMessageDialog(null, "Erro ao processar notas! " + saida.toString());
 		}
 	}
 }
