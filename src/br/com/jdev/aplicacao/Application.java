@@ -22,10 +22,10 @@ public class Application {
 
 	public static void main(String[] args) {
 		
+		try {
+		
 		String login = JOptionPane.showInputDialog("Informe o login");
 		String senha = JOptionPane.showInputDialog("Informe a senha");
-
-		
 
 		if(new FuncaoAutenticacao(new Diretor(login, senha)).autenticar()) {
 
@@ -131,6 +131,9 @@ public class Application {
 	}else {
 		JOptionPane.showMessageDialog(null, "As credenciais estão incorretas, tente novamente!");
 	}
-		
+		}catch (Exception e) {
+			e.printStackTrace();
+			JOptionPane.showMessageDialog(null, "Erro ao processar notas!");
+		}
 	}
 }
