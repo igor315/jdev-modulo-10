@@ -1,8 +1,10 @@
 package br.com.jdev.aplicacao;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Scanner;
 
 /**
  * @author jdev-treinamentos
@@ -23,6 +25,9 @@ public class Application {
 	public static void main(String[] args) {
 		
 		try {
+			
+		File fil = new File("lines.txt");
+		Scanner scanner = new Scanner(fil);
 		
 		String login = JOptionPane.showInputDialog("Informe o login");
 		String senha = JOptionPane.showInputDialog("Informe a senha");
@@ -35,12 +40,12 @@ public class Application {
 		HashMap<String, List<Aluno>> maps = new HashMap<String, List<Aluno>>();
 		
 
-		for (int qtd = 1; qtd <= 5; qtd++) {
+		for (int qtd = 1; qtd <= 1; qtd++) {
 
 			String nome = JOptionPane.showInputDialog("Qual o nome do aluno " + qtd + "?");
-			/*
-			 * String idade = JOptionPane.showInputDialog("Qual a idade?"); String
-			 * dataNascimento = JOptionPane.showInputDialog("Data de nascimento?"); String
+			
+			 String idade = JOptionPane.showInputDialog("Qual a idade?");
+			 /* dataNascimento = JOptionPane.showInputDialog("Data de nascimento?"); String
 			 * rg = JOptionPane.showInputDialog("Registro Geral?"); String cpf =
 			 * JOptionPane.showInputDialog("Qual o CPF?"); String mae =
 			 * JOptionPane.showInputDialog("Nome da mãe?"); String pai =
@@ -52,9 +57,9 @@ public class Application {
 
 			Aluno aluno = new Aluno();
 			aluno.setNome(nome);
-			/*
-			 * aluno1.setIdade(Integer.valueOf(idade));
-			 * aluno1.setDataNascimento(dataNascimento); aluno1.setRegistroGeral(rg);
+			
+			aluno.setIdade(Integer.valueOf(idade));
+			/* aluno1.setDataNascimento(dataNascimento); aluno1.setRegistroGeral(rg);
 			 * aluno1.setNumeroCpf(cpf); aluno1.setNomeMae(mae); aluno1.setNomePai(pai);
 			 * aluno1.setDataMatricula(matricula); aluno1.setSerieMatriculado(serie);
 			 * aluno1.setNomeEscola(escola);
@@ -131,7 +136,7 @@ public class Application {
 	}else {
 		JOptionPane.showMessageDialog(null, "As credenciais estão incorretas, tente novamente!");
 	}
-		}catch (Exception e) {
+		}catch (java.lang.NumberFormatException e) {
 			StringBuilder saida = new StringBuilder();
 			
 //			Imprime erro no console Java
@@ -147,7 +152,12 @@ public class Application {
 				saida.append("\nClass : " + e.getClass().getName());
 			}
 			
-			JOptionPane.showMessageDialog(null, "Erro ao processar notas! " + saida.toString());
+			JOptionPane.showMessageDialog(null, "Erro de conversão de número! " + saida.toString());
+		}catch (NullPointerException e ) {
+			JOptionPane.showMessageDialog(null, "OPaa um null pointer exeption : " + e.getClass());
+		}catch (Exception e ) {
+			e.printStackTrace();
+			JOptionPane.showMessageDialog(null, "Erro inesperado : " + e.getClass());
 		}
 	}
 }
