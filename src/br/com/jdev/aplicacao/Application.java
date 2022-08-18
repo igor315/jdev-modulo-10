@@ -1,8 +1,11 @@
 package br.com.jdev.aplicacao;
 
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Scanner;
 
 /**
  * @author jdev-treinamentos
@@ -13,6 +16,7 @@ import javax.swing.JOptionPane;
 import br.com.jdev.model.Aluno;
 import br.com.jdev.model.Diretor;
 import br.com.jdev.model.Disciplina;
+import br.com.jdev.util.ExecaoProcessarNota;
 import br.com.jdev.util.FuncaoAutenticacao;
 import br.com.jdev.util.StatusAluno;
 
@@ -21,6 +25,9 @@ public class Application {
 	public static void main(String[] args) {
 		
 		try {
+		
+		lerArquivo();
+			
 		
 		String login = JOptionPane.showInputDialog("Informe o login");
 		String senha = JOptionPane.showInputDialog("Informe a senha");
@@ -148,13 +155,22 @@ public class Application {
 			JOptionPane.showMessageDialog(null, "Erro de conversão de número! " + saida.toString());
 		}catch (NullPointerException e ) {
 			JOptionPane.showMessageDialog(null, "OPaa um null pointer exeption : " + e.getClass());
-		}catch (Exception e ) {
+		}catch (ExecaoProcessarNota e ) {
 			e.printStackTrace();
-			JOptionPane.showMessageDialog(null, "Erro inesperado : " + e.getClass());
+			JOptionPane.showMessageDialog(null, "Erro inesperado : " + e.getClass().getName());
 			
 //		O bloco finnally sempre será executado ocorrendo erros ou não
 		}finally {
 			JOptionPane.showMessageDialog(null, "Obrigado por aprender java comigo :)");
+		}
+	}
+	
+	public static void lerArquivo () throws ExecaoProcessarNota {
+		try {
+			File fil = new File("lines.txt");
+			Scanner scanner = new Scanner(fil);
+		} catch (FileNotFoundException e) {
+			throw new ExecaoProcessarNota(e.getMessage());
 		}
 	}
 }
