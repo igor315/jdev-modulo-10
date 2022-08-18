@@ -1,10 +1,8 @@
 package br.com.jdev.aplicacao;
 
-import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Scanner;
 
 /**
  * @author jdev-treinamentos
@@ -12,11 +10,9 @@ import java.util.Scanner;
  */
 import javax.swing.JOptionPane;
 
-import br.com.jdev.interfaces.PermitirAcesso;
 import br.com.jdev.model.Aluno;
 import br.com.jdev.model.Diretor;
 import br.com.jdev.model.Disciplina;
-import br.com.jdev.model.Secretario;
 import br.com.jdev.util.FuncaoAutenticacao;
 import br.com.jdev.util.StatusAluno;
 
@@ -25,9 +21,6 @@ public class Application {
 	public static void main(String[] args) {
 		
 		try {
-			
-		File fil = new File("lines.txt");
-		Scanner scanner = new Scanner(fil);
 		
 		String login = JOptionPane.showInputDialog("Informe o login");
 		String senha = JOptionPane.showInputDialog("Informe a senha");
@@ -158,6 +151,10 @@ public class Application {
 		}catch (Exception e ) {
 			e.printStackTrace();
 			JOptionPane.showMessageDialog(null, "Erro inesperado : " + e.getClass());
+			
+//		O bloco finnally sempre será executado ocorrendo erros ou não
+		}finally {
+			JOptionPane.showMessageDialog(null, "Obrigado por aprender java comigo :)");
 		}
 	}
 }
