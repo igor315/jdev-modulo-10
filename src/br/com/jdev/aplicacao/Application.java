@@ -26,8 +26,6 @@ public class Application {
 		
 		try {
 		
-		lerArquivo();
-			
 		
 		String login = JOptionPane.showInputDialog("Informe o login");
 		String senha = JOptionPane.showInputDialog("Informe a senha");
@@ -158,10 +156,5 @@ public class Application {
 		}finally {
 			JOptionPane.showMessageDialog(null, "Obrigado por aprender java comigo :)");
 		}
-	}
-	
-	public static void lerArquivo () throws FileNotFoundException {
-			File fil = new File("lines.txt");
-			Scanner scanner = new Scanner(fil);
 	}
 }
