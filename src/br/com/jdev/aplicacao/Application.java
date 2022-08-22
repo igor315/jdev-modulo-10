@@ -136,7 +136,7 @@ public class Application {
 	}else {
 		JOptionPane.showMessageDialog(null, "As credenciais estão incorretas, tente novamente!");
 	}
-		}catch (java.lang.NumberFormatException e) {
+		}catch (Exception e) {
 			StringBuilder saida = new StringBuilder();
 			
 //			Imprime erro no console Java
@@ -153,11 +153,6 @@ public class Application {
 			}
 			
 			JOptionPane.showMessageDialog(null, "Erro de conversão de número! " + saida.toString());
-		}catch (NullPointerException e ) {
-			JOptionPane.showMessageDialog(null, "OPaa um null pointer exeption : " + e.getClass());
-		}catch (ExecaoProcessarNota e ) {
-			e.printStackTrace();
-			JOptionPane.showMessageDialog(null, "Erro inesperado : " + e.getClass().getName());
 			
 //		O bloco finnally sempre será executado ocorrendo erros ou não
 		}finally {
@@ -165,12 +160,8 @@ public class Application {
 		}
 	}
 	
-	public static void lerArquivo () throws ExecaoProcessarNota {
-		try {
+	public static void lerArquivo () throws FileNotFoundException {
 			File fil = new File("lines.txt");
 			Scanner scanner = new Scanner(fil);
-		} catch (FileNotFoundException e) {
-			throw new ExecaoProcessarNota(e.getMessage());
-		}
 	}
 }
