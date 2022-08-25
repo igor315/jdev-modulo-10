@@ -27,6 +27,18 @@ public class ArrayVetor {
 		Disciplina logicaProgramacao = new Disciplina();
 		logicaProgramacao.setDisciplina("Lógica de programação");
 		aluno.getDisciplinas().add(logicaProgramacao);
+		
+		
+		System.out.println("Nome do Aluno = " + aluno.getNome() + " inscrito no curso de " + aluno.getNomeEscola());
+		System.out.println("-------------------Disciplinas do Aluno--------------------");
+		for(Disciplina disciplina : aluno.getDisciplinas()) {
+			System.out.println(disciplina.getDisciplina());
+			
+			System.out.println("Notas da disciciplina");
+			for(int pos = 0; pos < disciplina.getNota().length; pos++) {
+				System.out.println("Nota " + (pos+1) + " = " + disciplina.getNota()[pos]);
+			}
+		}
 	}
 
 }
