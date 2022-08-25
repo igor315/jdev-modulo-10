@@ -1,12 +1,14 @@
 package br.com.jdev.model;
 
+import java.util.Arrays;
 import java.util.Objects;
 
 /*Essa classe servirá para todos os objetos e instancias de notas e materias*/
 public class Disciplina {
 
-	String disciplina;
-	double nota;
+//	Cada disciplina terá 4 notas durante o ano inteiro
+	private String disciplina;
+	private double[] nota = new double[4];
 
 	public String getDisciplina() {
 		return disciplina;
@@ -16,11 +18,11 @@ public class Disciplina {
 		this.disciplina = disciplina;
 	}
 
-	public double getNota() {
+	public double[] getNota() {
 		return nota;
 	}
 
-	public void setNota(double nota) {
+	public void setNota(double[] nota) {
 		this.nota = nota;
 	}
 
@@ -29,9 +31,23 @@ public class Disciplina {
 		return "Disciplina [disciplina=" + disciplina + ", nota=" + nota + "]";
 	}
 
+	public double getMediaNotas() {
+		double somaTotal = 0;
+		
+		for(int pos = 0; pos < nota.length; pos ++){
+			somaTotal += nota[pos];
+		}
+		return somaTotal / 4;
+	}
+	
+	
 	@Override
 	public int hashCode() {
-		return Objects.hash(disciplina, nota);
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + Arrays.hashCode(nota);
+		result = prime * result + Objects.hash(disciplina);
+		return result;
 	}
 
 	@Override
@@ -43,8 +59,7 @@ public class Disciplina {
 		if (getClass() != obj.getClass())
 			return false;
 		Disciplina other = (Disciplina) obj;
-		return Objects.equals(disciplina, other.disciplina)
-				&& Double.doubleToLongBits(nota) == Double.doubleToLongBits(other.nota);
+		return Objects.equals(disciplina, other.disciplina) && Arrays.equals(nota, other.nota);
 	}
-
+	
 }

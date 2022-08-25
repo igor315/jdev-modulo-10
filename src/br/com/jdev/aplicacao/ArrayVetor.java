@@ -1,27 +1,32 @@
 package br.com.jdev.aplicacao;
 
-import javax.swing.JOptionPane;
+import br.com.jdev.model.Aluno;
+import br.com.jdev.model.Disciplina;
 
 public class ArrayVetor {
 
 	public static void main(String[] args) {
 
-//                          0 	 1    2	
-		double[] numeros = {9.5, 8.4, 5.5};
+		double[] notasCursoJava = {8.8,9.7,7.6,6.8};
+		double[] notasLogicaProgramacao = {5.7,8.9,7.4,9.5};
 		
-//		Quando são varios tipos de dados fazemos um Array de String
-		String[] dados = new String[4];
-		dados[0] = "Igor";
-		dados[1] = "Curso de Java";
-		dados[2] = "igor312@gmail.com.br";
-		dados[3] = "idade 27 anos";
+//		Criação do aluno
+		Aluno aluno = new Aluno();
+		aluno.setNome("Igor");
+		aluno.setNomeEscola("JDEV Treinamento");
+
+//		Criação da disciplina
+		Disciplina cursoJava = new Disciplina();
+		cursoJava.setDisciplina("Curso de Java");
 		
-//		Mesmo Array de cima feito de outra forma
-		String[] valores = {"Igor", "Curso de Java", "igor312@gmail.com.br", "idade 27 anos"};
+		cursoJava.setNota(notasCursoJava);
+		cursoJava.setNota(notasLogicaProgramacao);
 		
-		for(int pos = 0; pos < valores.length; pos ++) {
-			System.out.println("Valor na posição " + pos + " é = " +valores[pos]);
-		}
+		aluno.getDisciplinas().add(cursoJava);
+		
+		Disciplina logicaProgramacao = new Disciplina();
+		logicaProgramacao.setDisciplina("Lógica de programação");
+		aluno.getDisciplinas().add(logicaProgramacao);
 	}
 
 }
