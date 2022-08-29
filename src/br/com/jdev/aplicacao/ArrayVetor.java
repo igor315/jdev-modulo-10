@@ -20,7 +20,6 @@ public class ArrayVetor {
 		cursoJava.setDisciplina("Curso de Java");
 		
 		cursoJava.setNota(notasCursoJava);
-		cursoJava.setNota(notasLogicaProgramacao);
 		
 		aluno.getDisciplinas().add(cursoJava);
 		
@@ -28,6 +27,8 @@ public class ArrayVetor {
 		logicaProgramacao.setDisciplina("Lógica de programação");
 		aluno.getDisciplinas().add(logicaProgramacao);
 		
+		/*Corrigindo um trecho do codigo onde setei notas do curso de logica errado*/
+		logicaProgramacao.setNota(notasLogicaProgramacao);
 		
 		System.out.println("Nome do Aluno = " + aluno.getNome() + " inscrito no curso de " + aluno.getNomeEscola());
 		System.out.println("-------------------Disciplinas do Aluno--------------------");
