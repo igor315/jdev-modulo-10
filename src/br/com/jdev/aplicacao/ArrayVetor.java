@@ -12,47 +12,58 @@ public class ArrayVetor {
 		
 //		Criação do aluno
 		Aluno aluno = new Aluno();
-		aluno.setNome("Igor");
+		aluno.setNome("Igor Santos Oliveira");
 		aluno.setNomeEscola("JDEV Treinamento");
 
 //		Criação da disciplina
 		Disciplina cursoJava = new Disciplina();
 		cursoJava.setDisciplina("Curso de Java");
-		
 		cursoJava.setNota(notasCursoJava);
-		
 		aluno.getDisciplinas().add(cursoJava);
 		
 		Disciplina logicaProgramacao = new Disciplina();
 		logicaProgramacao.setDisciplina("Lógica de programação");
+		logicaProgramacao.setNota(notasLogicaProgramacao);
 		aluno.getDisciplinas().add(logicaProgramacao);
 		
-		/*Corrigindo um trecho do codigo onde setei notas do curso de logica errado*/
-		logicaProgramacao.setNota(notasLogicaProgramacao);
 		
-		System.out.println("Nome do Aluno = " + aluno.getNome() + " inscrito no curso de " + aluno.getNomeEscola());
-		System.out.println("-------------------Disciplinas do Aluno--------------------");
-		for(Disciplina disciplina : aluno.getDisciplinas()) {
-			System.out.println("Disciplina: " + disciplina.getDisciplina());
-			System.out.println("As notas da discplina são:");
-
-//			Criamos uma variável auxiliar para descobrir qual a maior nota da disciplina
-			double notaMax = 0.0;
+		
+//		Criação das notas do aluno2
+		double[] notasCursoPHP = {6.7,8.4,9.2,7.5};
+		double[] notasCursoLogica = {7.4,9.3,6.1,8.7};
+		
+		Aluno aluno2 = new Aluno();
+		aluno2.setNome("Alex Fernando Egidio");
+		aluno2.setNomeEscola("JDEV Treinamento");
+		
+		Disciplina cursoPHP = new Disciplina();
+		cursoPHP.setDisciplina("Curso de PHP");
+		cursoPHP.setNota(notasCursoPHP);
+		aluno2.getDisciplinas().add(cursoPHP);
+		
+		Disciplina cursoLogica = new Disciplina();
+		cursoLogica.setDisciplina("Curso de Lógica de Programação");
+		cursoLogica.setNota(notasCursoLogica);
+		aluno2.getDisciplinas().add(cursoLogica);
+		
+		
+//		----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+		
+		Aluno[] arrayAlunos = new Aluno[2];
+		arrayAlunos[0] = aluno;
+		arrayAlunos[1] = aluno2;
+		
+		for(int pos = 0; pos < arrayAlunos.length; pos ++) {
+			System.out.println("Nome do aluno é: " + arrayAlunos[pos].getNome());
 			
-			for(int pos = 0; pos < disciplina.getNota().length; pos++) {
-				System.out.println("Nota " + (pos+1) + " = " + disciplina.getNota()[pos]);
-			
-//				Nesse trecho do código temos a implementação para descobrir a maior nota da disciplina
-				if(pos == 0) {
-					notaMax = disciplina.getNota()[pos];
-				}else {
-					if(disciplina.getNota()[pos] < notaMax) {
-						notaMax = disciplina.getNota()[pos];
-					}
+			for(Disciplina disciplina : arrayAlunos[pos].getDisciplinas()) {
+				System.out.println("Nome da disciplina é: " + disciplina.getDisciplina());
+				
+				for(int posnota = 0; posnota < disciplina.getNota().length; posnota ++ ) {
+					System.out.println("A nota número : " + (posnota + 1) + " é = " + disciplina.getNota()[posnota]);
 				}
+				System.out.println();
 			}
-			System.out.println("A menor nota da Disciplina = " + disciplina.getDisciplina() + " é de valor: " + notaMax);
-			System.out.println();
 		}
 	}
 
