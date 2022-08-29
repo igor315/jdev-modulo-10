@@ -32,12 +32,26 @@ public class ArrayVetor {
 		System.out.println("Nome do Aluno = " + aluno.getNome() + " inscrito no curso de " + aluno.getNomeEscola());
 		System.out.println("-------------------Disciplinas do Aluno--------------------");
 		for(Disciplina disciplina : aluno.getDisciplinas()) {
-			System.out.println(disciplina.getDisciplina());
+			System.out.println("Disciplina: " + disciplina.getDisciplina());
+			System.out.println("As notas da discplina são:");
+
+//			Criamos uma variável auxiliar para descobrir qual a maior nota da disciplina
+			double notaMax = 0.0;
 			
-			System.out.println("Notas da disciciplina");
 			for(int pos = 0; pos < disciplina.getNota().length; pos++) {
 				System.out.println("Nota " + (pos+1) + " = " + disciplina.getNota()[pos]);
+			
+//				Nesse trecho do código temos a implementação para descobrir a maior nota da disciplina
+				if(pos == 0) {
+					notaMax = disciplina.getNota()[pos];
+				}else {
+					if(disciplina.getNota()[pos] > notaMax) {
+						notaMax = disciplina.getNota()[pos];
+					}
+				}
 			}
+			System.out.println("A maior nota da Disciplina = " + disciplina.getDisciplina() + " é de valor: " + notaMax);
+			System.out.println();
 		}
 	}
 
